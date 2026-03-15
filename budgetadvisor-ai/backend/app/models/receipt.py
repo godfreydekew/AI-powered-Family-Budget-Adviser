@@ -1,8 +1,11 @@
+from __future__ import annotations
+
 import uuid
 from datetime import date, datetime, time, timezone
 
 from sqlalchemy import DateTime
 from sqlmodel import Field, SQLModel
+from app.models.receipt_item import ReceiptItemPublic
 
 
 def _utcnow() -> datetime:
@@ -67,3 +70,8 @@ class ReceiptPublic(ReceiptBase):
 class ReceiptsPublic(SQLModel):
     data: list[ReceiptPublic]
     count: int
+
+
+class ReceiptWithItemsPublic(ReceiptPublic):
+    """Receipt response that includes all line items — returned after confirm."""
+    items: list[ReceiptItemPublic] = Field(default_factory=list)

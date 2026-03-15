@@ -6,7 +6,18 @@ from app.models.chat import Chat, ChatCreate, ChatMessage, ChatMessageCreate
 from app.models.common import Message, NewPassword, Token, TokenPayload
 from app.models.merchant import Merchant, MerchantCreate, MerchantPublic
 from app.models.ocr_processing_log import OcrProcessingLog, OcrProcessingLogCreate
-from app.models.receipt import Receipt, ReceiptCreate, ReceiptPublic, ReceiptsPublic
+from app.models.receipt import Receipt, ReceiptCreate, ReceiptPublic, ReceiptsPublic, ReceiptWithItemsPublic
+from app.models.receipt_scan import (
+    LineItemExtraction,
+    MerchantExtraction,
+    ReceiptConfirmRequest,
+    ReceiptExtraction,
+    SavingsExtraction,
+    TransactionExtraction,
+    extraction_to_item_creates,
+    extraction_to_merchant_create,
+    extraction_to_receipt_create,
+)
 from app.models.receipt_item import (
     ReceiptItem,
     ReceiptItemCreate,
@@ -51,6 +62,7 @@ __all__ = [
     "ReceiptCreate",
     "ReceiptPublic",
     "ReceiptsPublic",
+    "ReceiptWithItemsPublic",
     # ReceiptItem
     "ReceiptItem",
     "ReceiptItemCreate",
@@ -63,6 +75,16 @@ __all__ = [
     # OcrProcessingLog
     "OcrProcessingLog",
     "OcrProcessingLogCreate",
+    # Receipt scan schemas (LLM extraction + confirm request)
+    "MerchantExtraction",
+    "TransactionExtraction",
+    "LineItemExtraction",
+    "SavingsExtraction",
+    "ReceiptExtraction",
+    "ReceiptConfirmRequest",
+    "extraction_to_merchant_create",
+    "extraction_to_receipt_create",
+    "extraction_to_item_creates",
     # UserSession
     "UserSession",
     "UserSessionCreate",
