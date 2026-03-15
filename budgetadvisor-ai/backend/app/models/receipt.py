@@ -29,7 +29,9 @@ class ReceiptBase(SQLModel):
 class Receipt(ReceiptBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     user_id: uuid.UUID = Field(foreign_key="user.id", index=True)
-    merchant_id: uuid.UUID | None = Field(default=None, foreign_key="merchant.id", index=True)
+    merchant_id: uuid.UUID | None = Field(
+        default=None, foreign_key="merchant.id", index=True
+    )
     scanned_at: datetime | None = Field(
         default_factory=_utcnow,
         sa_type=DateTime(timezone=True),  # type: ignore

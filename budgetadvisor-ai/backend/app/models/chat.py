@@ -1,6 +1,7 @@
 """
 Stage 1 stub — schema only. Not used until Stage 2.
 """
+
 import uuid
 from datetime import datetime, timezone
 
@@ -15,6 +16,7 @@ def _utcnow() -> datetime:
 # ---------------------------------------------------------------------------
 # Chat
 # ---------------------------------------------------------------------------
+
 
 class ChatBase(SQLModel):
     title: str | None = Field(default=None, max_length=255)
@@ -40,6 +42,7 @@ class ChatCreate(ChatBase):
 # ---------------------------------------------------------------------------
 # ChatMessage
 # ---------------------------------------------------------------------------
+
 
 class ChatMessageBase(SQLModel):
     role: str = Field(max_length=20)
