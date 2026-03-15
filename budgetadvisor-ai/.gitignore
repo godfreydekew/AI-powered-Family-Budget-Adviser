@@ -1,0 +1,27 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+service_account*.json
+
+# Node
+node_modules/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+
+# Test output
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# OS
+.DS_Store
