@@ -6,7 +6,19 @@ from app.models.chat import Chat, ChatCreate, ChatMessage, ChatMessageCreate
 from app.models.common import Message, NewPassword, Token, TokenPayload
 from app.models.merchant import Merchant, MerchantCreate, MerchantPublic
 from app.models.ocr_processing_log import OcrProcessingLog, OcrProcessingLogCreate
-from app.models.receipt import Receipt, ReceiptCreate, ReceiptPublic, ReceiptsPublic, ReceiptWithItemsPublic
+from app.models.receipt import (
+    Receipt,
+    ReceiptCreate,
+    ReceiptPublic,
+    ReceiptsPublic,
+    ReceiptWithItemsPublic,
+)
+from app.models.receipt_item import (
+    ReceiptItem,
+    ReceiptItemCreate,
+    ReceiptItemPublic,
+    ReceiptItemUpdate,
+)
 from app.models.receipt_scan import (
     LineItemExtraction,
     MerchantExtraction,
@@ -17,12 +29,6 @@ from app.models.receipt_scan import (
     extraction_to_item_creates,
     extraction_to_merchant_create,
     extraction_to_receipt_create,
-)
-from app.models.receipt_item import (
-    ReceiptItem,
-    ReceiptItemCreate,
-    ReceiptItemPublic,
-    ReceiptItemUpdate,
 )
 from app.models.user import (
     UpdatePassword,

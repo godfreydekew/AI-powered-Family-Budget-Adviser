@@ -5,6 +5,7 @@ Changing the AI backend only requires editing this file.
 All routes call get_scanner() and receive a ReceiptScanner — they never
 import a concrete implementation.
 """
+
 from functools import lru_cache
 
 from fastapi import HTTPException, status
@@ -24,9 +25,7 @@ def _build_scanner() -> ReceiptScanner:
       return HuaweiPanguScanner(api_key=settings.HUAWEI_API_KEY)
     """
     if not settings.OPENAI_API_KEY:
-        raise RuntimeError(
-            "OPENAI_API_KEY is not set. Add it to your .env file."
-        )
+        raise RuntimeError("OPENAI_API_KEY is not set. Add it to your .env file.")
     return OpenAIVisionScanner(
         api_key=settings.OPENAI_API_KEY,
         model=settings.OPENAI_MODEL,

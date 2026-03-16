@@ -8,6 +8,7 @@ into the nested structure the LLM returns and the client reviews.
 - ReceiptConfirmRequest  — client request to persist after review
 - Mapper functions       — convert extraction → existing DB Create models
 """
+
 import uuid
 from datetime import date, time
 
@@ -17,14 +18,15 @@ from app.models.merchant import MerchantCreate
 from app.models.receipt import ReceiptCreate
 from app.models.receipt_item import ReceiptItemCreate
 
-
 # ---------------------------------------------------------------------------
 # LLM structured output schemas  (pure Pydantic — no SQLModel noise)
 # Fields mirror the DB models so the LLM can populate them directly.
 # ---------------------------------------------------------------------------
 
+
 class MerchantExtraction(BaseModel):
     """Maps to Merchant / MerchantCreate."""
+
     name: str | None = None
     type: str | None = Field(
         default=None,
@@ -35,6 +37,7 @@ class MerchantExtraction(BaseModel):
 
 class TransactionExtraction(BaseModel):
     """Maps to Receipt / ReceiptCreate date/amount fields."""
+
     date: str | None = Field(default=None, description="YYYY-MM-DD")
     time: str | None = Field(default=None, description="HH:MM")
     currency: str = Field(default="GBP", description="ISO 4217")
@@ -45,6 +48,7 @@ class TransactionExtraction(BaseModel):
 
 class LineItemExtraction(BaseModel):
     """Maps to ReceiptItem / ReceiptItemCreate fields."""
+
     raw_description: str = Field(description="Exact text from receipt, never modified")
     clean_description: str | None = None
     category: str = Field(
@@ -66,6 +70,7 @@ class LineItemExtraction(BaseModel):
 
 class SavingsExtraction(BaseModel):
     """Maps to Receipt.total_promotions / total_saved."""
+
     total_promotions: float = 0.0
     total_saved: float = 0.0
 
@@ -76,6 +81,7 @@ class ReceiptExtraction(BaseModel):
     Combines Merchant + Receipt header + ReceiptItems + savings into one
     nested structure the user can review and edit before confirming.
     """
+
     merchant: MerchantExtraction
     transaction: TransactionExtraction
     items: list[LineItemExtraction]
@@ -86,20 +92,23 @@ class ReceiptExtraction(BaseModel):
 # API request for the confirm step
 # ---------------------------------------------------------------------------
 
+
 class ReceiptConfirmRequest(BaseModel):
     """
     Sent by the client after the user reviews (and optionally edits) the preview.
     Contains the (possibly edited) extraction plus metadata from the original scan.
     """
+
     extraction: ReceiptExtraction
-    scan_method: str = "vision"      # 'vision' | 'ocr_llm'
-    image_path: str | None = None    # relative path stored in object storage
+    scan_method: str = "vision"  # 'vision' | 'ocr_llm'
+    image_path: str | None = None  # relative path stored in object storage
     log_id: uuid.UUID | None = None  # OcrProcessingLog.id — linked after confirm
 
 
 # ---------------------------------------------------------------------------
 # Mappers: extraction → existing DB Create models
 # ---------------------------------------------------------------------------
+
 
 def extraction_to_merchant_create(m: MerchantExtraction) -> MerchantCreate | None:
     if not m.name:
@@ -119,14 +128,14 @@ def extraction_to_receipt_create(
     image_path: str | None,
 ) -> ReceiptCreate:
     tx = extraction.transaction
-    transaction_date: date | None = None
+    transaction_date: date = date.today()
     transaction_time: time | None = None
 
     if tx.date:
         try:
             transaction_date = date.fromisoformat(tx.date)
         except ValueError:
-            pass
+            transaction_date = date.today()
 
     if tx.time:
         try:

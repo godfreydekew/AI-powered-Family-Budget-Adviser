@@ -6,6 +6,7 @@ Uses the Responses API with structured outputs:
 
 Temperature is fixed at 0 — receipt parsing must be deterministic.
 """
+
 import time
 
 import openai
@@ -66,6 +67,7 @@ class OpenAIVisionScanner(ReceiptScanner):
 # ---------------------------------------------------------------------------
 # Timing helper used by the route to record processing_ms
 # ---------------------------------------------------------------------------
+
 
 class ScanTimer:
     def __init__(self) -> None:

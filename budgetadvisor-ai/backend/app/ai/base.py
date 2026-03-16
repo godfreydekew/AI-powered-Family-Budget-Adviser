@@ -5,6 +5,7 @@ Any AI backend (OpenAI, Ollama, Huawei Pangu) must implement this.
 The rest of the application only depends on this contract — never on a
 concrete implementation — so swapping models requires zero route changes.
 """
+
 from abc import ABC, abstractmethod
 
 from app.models.receipt_scan import ReceiptExtraction

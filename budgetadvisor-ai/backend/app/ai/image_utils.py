@@ -2,6 +2,7 @@
 Image handling: MIME detection, base64 encoding, size validation.
 These utilities are scanner-agnostic — every AI path uses them.
 """
+
 import base64
 
 SUPPORTED_MIME_TYPES: dict[str, str] = {
