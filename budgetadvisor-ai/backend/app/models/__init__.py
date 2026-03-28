@@ -42,6 +42,12 @@ from app.models.user import (
     UserUpdateMe,
 )
 from app.models.user_session import UserSession, UserSessionCreate
+from app.models.rag import (
+    Chunk,
+    ChunkBase,
+    Document,
+    DocumentBase,
+)
 
 __all__ = [
     "SQLModel",
@@ -99,9 +105,15 @@ __all__ = [
     "ChatCreate",
     "ChatMessage",
     "ChatMessageCreate",
+    # RAG
+    "Document",
+    "DocumentBase",
+    "Chunk",
+    "ChunkBase",
     # Common
     "Message",
     "Token",
     "TokenPayload",
     "NewPassword",
+    
 ]
