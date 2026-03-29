@@ -19,7 +19,7 @@ const navItems = [
   { label: "Receipts", path: "/receipts", icon: Receipt },
   { label: "Upload", path: "/receipts/upload", icon: Receipt },
   { label: "Analytics", path: "/analytics", icon: BarChart3 },
-  { label: "Advisor", path: "/advisor", icon: Sparkles },
+  { label: "Advisors", path: "/advisors", icon: Sparkles },
 ];
 
 

@@ -16,6 +16,7 @@ import ReceiptsList from "./pages/ReceiptsList";
 import ReceiptDetail from "./pages/ReceiptDetail";
 import Analytics from "./pages/Analytics";
 import AdvisorPage from "./pages/Advisor";
+import AdvisorsPage from "./pages/Advisors";
 import SettingsPage from "./pages/Settings";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminUsers from "./pages/admin/AdminUsers";
@@ -23,6 +24,8 @@ import AdminLogs from "./pages/admin/AdminLogs";
 import AdminCategories from "./pages/admin/AdminCategories";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminProfile from "./pages/admin/AdminProfile";
+import AdminBenefits from "./pages/admin/AdminBenefits";
+import BenefitsPage from "./pages/Benefits";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -104,6 +107,14 @@ const App = () => (
                 }
               />
               <Route
+                path="/advisors"
+                element={
+                  <ProtectedRoute>
+                    <AdvisorsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
                 path="/advisor"
                 element={
                   <ProtectedRoute>
@@ -116,6 +127,14 @@ const App = () => (
                 element={
                   <ProtectedRoute>
                     <SettingsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/benefits"
+                element={
+                  <ProtectedRoute>
+                    <BenefitsPage />
                   </ProtectedRoute>
                 }
               />
@@ -166,6 +185,14 @@ const App = () => (
                 element={
                   <ProtectedRoute requireAdmin>
                     <AdminProfile />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/benefits"
+                element={
+                  <ProtectedRoute requireAdmin>
+                    <AdminBenefits />
                   </ProtectedRoute>
                 }
               />

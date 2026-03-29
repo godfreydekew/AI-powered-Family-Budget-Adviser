@@ -6,6 +6,21 @@ from app.models.chat import Chat, ChatCreate, ChatMessage, ChatMessageCreate
 from app.models.common import Message, NewPassword, Token, TokenPayload
 from app.models.merchant import Merchant, MerchantCreate, MerchantPublic
 from app.models.ocr_processing_log import OcrProcessingLog, OcrProcessingLogCreate
+from app.models.rag import (
+    BenefitsAnswer,
+    BenefitsQuestion,
+    Chunk,
+    ChunkBase,
+    ChunkQuery,
+    ChunkResult,
+    ChunksResult,
+    Document,
+    DocumentBase,
+    DocumentIngest,
+    DocumentPublic,
+    DocumentsPublic,
+    SourceRef,
+)
 from app.models.receipt import (
     Receipt,
     ReceiptCreate,
@@ -42,12 +57,6 @@ from app.models.user import (
     UserUpdateMe,
 )
 from app.models.user_session import UserSession, UserSessionCreate
-from app.models.rag import (
-    Chunk,
-    ChunkBase,
-    Document,
-    DocumentBase,
-)
 
 __all__ = [
     "SQLModel",
@@ -105,15 +114,25 @@ __all__ = [
     "ChatCreate",
     "ChatMessage",
     "ChatMessageCreate",
-    # RAG
+    # RAG — DB models
     "Document",
     "DocumentBase",
     "Chunk",
     "ChunkBase",
+    # RAG — request / response schemas
+    "DocumentIngest",
+    "DocumentPublic",
+    "DocumentsPublic",
+    "ChunkQuery",
+    "ChunkResult",
+    "ChunksResult",
+    "BenefitsQuestion",
+    "BenefitsAnswer",
+    "SourceRef",
     # Common
     "Message",
     "Token",
     "TokenPayload",
     "NewPassword",
-    
+
 ]
