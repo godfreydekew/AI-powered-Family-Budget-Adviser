@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { GlobalFooter } from "@/components/GlobalFooter";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -15,7 +14,7 @@ export default function Landing() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-[#1a1a1a]">
+    <div className="min-h-screen bg-white text-[#1a1a1a] font-[Handlee,sans-serif]">
       {/* Nav */}
       <header className="absolute top-0 w-full z-50 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -24,7 +23,6 @@ export default function Landing() {
           </Link>
           <nav className="hidden md:flex items-center gap-8"></nav>
           <div className="hidden md:flex items-center gap-4">
-            <ThemeToggle />
             <Link
               to="/login"
               className="text-sm font-medium text-[#1a1a1a] hover:text-gray-600 transition-colors px-3 py-2"
@@ -81,7 +79,7 @@ export default function Landing() {
             transition={{ delay: 0.1, duration: 0.5, ease: [0.2, 0, 0, 1] }}
             className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
-            An AI-powered advisor that will help families manage their expenses and get unclaimed benefits seamlessly.
+            An AI-powered advisor that helps families manage their expenses and discover unclaimed benefits seamlessly.
           </motion.p>
           <motion.div
             variants={fadeUp}
@@ -110,7 +108,7 @@ export default function Landing() {
               Family Budget management
             </h2>
             <p className="text-xl text-gray-600 font-[Handlee,sans-serif]">
-              Track expenses across all your individual spending and family spending. It all starts with a simple steps.
+              Track expenses across both your individual and family spending. It all starts with a few simple steps.
             </p>
           </div>
 
@@ -186,7 +184,7 @@ export default function Landing() {
                    </div>
                    <h3 className="text-3xl font-semibold text-[#1a1a1a]">2. Submit</h3>
                    <p className="text-xl text-gray-600 leading-relaxed">
-                     Real time extraction of information that you can edit. and Submit it - Expenses are organized into a report for you. Just tap Submit when you're ready.
+                     Review the information automatically extracted in real-time and edit it if necessary. Expenses are organized in a report—just tap Submit when you're ready.
                    </p>
                 </div>
               </div>
@@ -204,9 +202,9 @@ export default function Landing() {
                    <div className="size-16 rounded-2xl bg-white shadow-sm border border-purple-100 flex items-center justify-center text-3xl">
                       🧠
                    </div>
-                   <h3 className="text-3xl font-semibold text-[#1a1a1a]">AI powered budget advisor agent.</h3>
+                   <h3 className="text-3xl font-semibold text-[#1a1a1a]">AI-powered budget advisor agent</h3>
                    <p className="text-xl text-gray-600 leading-relaxed">
-                     Your personal 24/7 advisor available to advise you on your spending. Wondering how much you have been spending? Ask your agent to break down your expenses. Before spending ask agent if this meets your budget.
+                     Your personal 24/7 financial advisor. Wondering how much you've been spending? Ask your agent for a breakdown of your expenses. Before making a purchase, ask the agent if it fits within your budget.
                    </p>
                 </div>
               </div>
@@ -219,9 +217,9 @@ export default function Landing() {
       {/* Benefits Agent */}
       <section className="py-24 sm:py-32 bg-[#FAF9F8] overflow-hidden border-y border-gray-100">
         <div className="max-w-6xl mx-auto px-4 text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1a1a1a] mb-6">Benefits Agent</h2>
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1a1a1a] mb-6">Discover Unclaimed Benefits</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We have an agent that will find different benefits and bring them to the door step of the users. Thousands of families in Europe miss billions of Euros in unclaimed benefits. Our benefits agent helps to find benefits.
+            Thousands of families across Europe miss out on billions of Euros in unclaimed benefits. Our dedicated benefits agent discovers available grants and subsidies, bringing them right to your fingertips.
           </p>
         </div>
 
@@ -273,9 +271,11 @@ export default function Landing() {
       {/* CTA Footer Wrapper */}
       <section className="bg-white py-32">
          <div className="max-w-4xl mx-auto px-4 text-center">
-           <h2 className="text-4xl md:text-[3.5rem] font-semibold tracking-tight text-[#1a1a1a] mb-10 leading-[1.1]">
-             Ready to be in control of your grocery shopping and do you to ensure you don't leave any penny unclaimed
-           </h2>
+           <div className="overflow-x-auto pb-6 w-full mask-linear">
+             <h2 className="text-3xl sm:text-4xl md:text-[3.5rem] font-semibold tracking-tight text-[#1a1a1a] mb-6 leading-[1.2] md:leading-[1.1] min-w-max md:min-w-0 md:whitespace-normal px-2">
+               Ready to take control of your expenses and ensure you don't leave a single penny unclaimed?
+             </h2>
+           </div>
            <Button asChild size="lg" className="rounded-full bg-[#A297FF] hover:bg-[#8e81f1] text-white px-10 h-16 text-xl shadow-md shadow-purple-500/20">
               <Link to="/register">Join budgetadvisor.ai</Link>
            </Button>
