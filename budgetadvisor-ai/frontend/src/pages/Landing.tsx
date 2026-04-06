@@ -1,15 +1,9 @@
 import { Link } from "react-router-dom";
+import { GlobalFooter } from "@/components/GlobalFooter";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import {
-  ScanLine,
-  PieChart,
-  Lightbulb,
-  ArrowRight,
-  Menu,
-  X,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 const fadeUp = {
@@ -21,54 +15,38 @@ export default function Landing() {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white text-[#1a1a1a]">
       {/* Nav */}
-      <header className="sticky top-0 z-50 glass-nav border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold tracking-tight">
-            <span className="text-accent">•</span> budgetadvisor.ai
+      <header className="absolute top-0 w-full z-50 bg-transparent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <Link to="/" className="text-xl font-semibold tracking-tight text-[#1a1a1a] flex items-center gap-2">
+            <span className="text-black text-2xl">💰</span> budgetadvisor.ai
           </Link>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Features
-            </a>
-            <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              How It Works
-            </a>
-            <a href="#stats" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Pricing
-            </a>
-          </nav>
-          <div className="hidden md:flex items-center gap-3">
+          <nav className="hidden md:flex items-center gap-8"></nav>
+          <div className="hidden md:flex items-center gap-4">
             <ThemeToggle />
             <Link
               to="/login"
-              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-3 py-2"
+              className="text-sm font-medium text-[#1a1a1a] hover:text-gray-600 transition-colors px-3 py-2"
             >
               Log In
             </Link>
-            <Button asChild>
-              <Link to="/register">Get Started</Link>
+            <Button asChild className="rounded-full bg-[#1a1a1a] text-white hover:bg-black/80 px-6 font-medium shadow-none">
+              <Link to="/register">Get started</Link>
             </Button>
           </div>
-          <button className="md:hidden p-2" onClick={() => setMobileMenu(!mobileMenu)}>
-            {mobileMenu ? <X className="size-5" /> : <Menu className="size-5" />}
+          <button className="md:hidden p-2 text-[#1a1a1a]" onClick={() => setMobileMenu(!mobileMenu)}>
+            {mobileMenu ? <X className="size-6" /> : <Menu className="size-6" />}
           </button>
         </div>
         {mobileMenu && (
-          <div className="md:hidden border-t border-border bg-card px-4 py-4 space-y-3">
-            <a href="#features" onClick={() => setMobileMenu(false)} className="block text-sm py-2">
-              Features
-            </a>
-            <a href="#how-it-works" onClick={() => setMobileMenu(false)} className="block text-sm py-2">
-              How It Works
-            </a>
+          <div className="md:hidden bg-white border-b border-gray-100 px-4 py-4 space-y-3 shadow-sm absolute w-full left-0 top-20">
             <div className="flex gap-2 pt-2">
-              <Button variant="outline" asChild className="flex-1">
+              <Button variant="outline" asChild className="flex-1 rounded-full border-gray-200">
                 <Link to="/login">Log In</Link>
               </Button>
-              <Button asChild className="flex-1">
-                <Link to="/register">Get Started</Link>
+              <Button asChild className="flex-1 rounded-full bg-[#1a1a1a] text-white">
+                <Link to="/register">Get started</Link>
               </Button>
             </div>
           </div>
@@ -76,238 +54,235 @@ export default function Landing() {
       </header>
 
       {/* Hero */}
-      <section className="hero-gradient relative overflow-hidden pb-12 sm:pb-24">
-        <div className="max-w-4xl mx-auto px-4 pt-16 pb-20 sm:pt-24 sm:pb-40 text-center">
+      <section className="relative overflow-hidden pt-36 pb-20 sm:pt-48 sm:pb-32 bg-gradient-to-b from-[#F5F6FE] to-white">
+        <div className="max-w-4xl mx-auto px-4 text-center z-10 relative">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
+            className="inline-flex items-center gap-2 mb-8 bg-white/60 backdrop-blur-sm px-4 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-sm border border-purple-100"
+          >
+            <span className="text-purple-500">✨</span> Budget Advisor App
+          </motion.div>
           <motion.h1
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             transition={{ duration: 0.5, ease: [0.2, 0, 0, 1] }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-semibold tracking-tighter text-balance leading-[1.05]"
+            className="text-5xl sm:text-7xl lg:text-[5rem] font-semibold tracking-tight text-balance leading-[1.05] text-[#1a1a1a] mb-6"
           >
-            Your spending, <span className="text-accent">understood</span>.
+            Manage Your Family<br className="hidden sm:block" /> Finances with AI
           </motion.h1>
           <motion.p
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.1, duration: 0.5, ease: [0.2, 0, 0, 1] }}
-            className="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
-            Scan receipts, track categories, and get AI-powered advice — built for families across Europe.
+            An AI-powered advisor that will help families manage their expenses and get unclaimed benefits seamlessly.
           </motion.p>
           <motion.div
             variants={fadeUp}
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.2, duration: 0.5, ease: [0.2, 0, 0, 1] }}
-            className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3"
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="rounded-full bg-[#A297FF] hover:bg-[#8e81f1] text-white px-8 h-14 text-base font-semibold shadow-md shadow-purple-500/20">
               <Link to="/register">
-                Get Started Free <ArrowRight className="size-4" />
+                Get started
               </Link>
             </Button>
-            <Button variant="outline" size="lg" asChild>
-              <a href="#how-it-works">See How It Works</a>
+            <Button variant="outline" size="lg" asChild className="rounded-full border-none bg-white text-[#A297FF] hover:bg-gray-50 px-8 h-14 text-base font-semibold shadow-sm">
+              <a href="#how-it-works">Learn More</a>
             </Button>
           </motion.div>
         </div>
+      </section>
 
-        {/* Phone mockup */}
-        <div className="relative max-w-sm mx-auto px-4 flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.7, ease: [0.2, 0, 0, 1] }}
-            className="relative bg-card rounded-[2.5rem] shadow-2xl border border-border overflow-hidden aspect-[9/16] max-h-[420px]"
-          >
-            <div className="p-6 pt-10">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <p className="text-xs text-muted-foreground">Overview 2025</p>
-                  <p className="text-sm font-medium mt-0.5">Account Balances</p>
+      {/* Section 1 & 2 wrapper */}
+      <section className="bg-white py-20 sm:py-32">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-24 max-w-3xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1a1a1a] mb-6 font-[Handlee,sans-serif]">
+              Family Budget management
+            </h2>
+            <p className="text-xl text-gray-600 font-[Handlee,sans-serif]">
+              Track expenses across all your individual spending and family spending. It all starts with a simple steps.
+            </p>
+          </div>
+
+          <div className="space-y-24 md:space-y-40">
+            {/* Step 1 */}
+            <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+               <div className="order-2 md:order-1 h-full min-h-[350px] flex items-center justify-center p-10 bg-[#FDF9F3] rounded-[2.5rem] border border-orange-100">
+                <div className="space-y-6">
+                   <div className="size-16 rounded-2xl bg-white shadow-sm border border-orange-100 flex items-center justify-center text-3xl">
+                      🤖
+                   </div>
+                   <h3 className="text-3xl font-semibold text-[#1a1a1a]">1. Snap your receipt</h3>
+                   <p className="text-xl text-gray-600 leading-relaxed">
+                     Take a photo of any receipt - our AI pulls the merchant, date, and amount automatically (in 150+ currencies).
+                   </p>
                 </div>
               </div>
-              <p className="text-3xl font-semibold tabular">£7,482.15</p>
-              <p className="text-xs text-success mt-1">▲ 54.09%</p>
-              <div className="mt-6 h-16 flex items-end gap-1">
-                {[32, 28, 35, 42, 38, 48].map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-accent/20 rounded-t"
-                    style={{ height: `${h * 1.2}%` }}
-                  />
-                ))}
-              </div>
-              <div className="flex justify-between mt-2 text-[10px] text-muted-foreground">
-                {["Jan", "Feb", "Mar", "Apr", "May", "Jun"].map((m) => (
-                  <span key={m}>{m}</span>
-                ))}
+              <div className="order-1 md:order-2">
+                <div className="bg-[#FAF9F8] rounded-[2.5rem] p-8 border border-gray-100 shadow-sm relative overflow-hidden aspect-square md:aspect-auto md:h-[550px]">
+                   <div className="absolute inset-x-8 top-12 bottom-0 bg-white rounded-t-[2rem] shadow-2xl border border-gray-200 overflow-hidden flex flex-col transform transition-transform hover:-translate-y-2 duration-500">
+                      <div className="h-14 border-b border-gray-100 flex items-center px-6 justify-between bg-gray-50/50">
+                        <div className="text-sm font-semibold text-gray-500">Scanning Receipt...</div>
+                        <div className="size-3 rounded-full bg-[#10b981] shadow-[0_0_8px_#10b981] animate-pulse"></div>
+                      </div>
+                      <div className="flex-1 bg-gray-100 p-6 relative">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=800&auto=format&fit=crop" alt="Receipt" className="w-full h-full object-cover rounded-xl" />
+                        <div className="absolute inset-x-6 top-1/3 h-1 bg-[#A297FF] shadow-[0_0_12px_#A297FF] animate-[pulse_2s_ease-in-out_infinite]"></div>
+                      </div>
+                   </div>
+                </div>
               </div>
             </div>
-          </motion.div>
 
-          {/* Floating chips — hidden on small screens to prevent clipping */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="hidden sm:block absolute -left-16 top-8 glass-card px-4 py-3 text-sm"
-          >
-            <p className="text-muted-foreground text-xs">Saved this year</p>
-            <p className="font-semibold tabular">£2,400</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.7, duration: 0.5 }}
-            className="hidden sm:block absolute -right-16 top-24 glass-card px-4 py-3 text-sm"
-          >
-            <p className="text-muted-foreground text-xs">Scan accuracy</p>
-            <p className="font-semibold tabular">94%</p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="hidden sm:block absolute left-1/2 -translate-x-1/2 -bottom-6 glass-card px-4 py-3 text-sm"
-          >
-            <p className="text-muted-foreground text-xs">Categories</p>
-            <p className="font-semibold tabular">8 tracked</p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Features */}
-      <section id="features" className="max-w-5xl mx-auto px-4 py-12 sm:py-24">
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center mb-8 sm:mb-16">
-          Everything you need to understand your spending
-        </h2>
-        <div className="grid sm:grid-cols-3 gap-8">
-          {[
-            {
-              icon: ScanLine,
-              title: "Receipt Scanning with AI Vision",
-              desc: "Point your camera at any receipt. Our AI extracts every line item in seconds.",
-            },
-            {
-              icon: PieChart,
-              title: "Smart Category Breakdown",
-              desc: "See exactly where your money goes with automatic categorisation across 9 categories.",
-            },
-            {
-              icon: Lightbulb,
-              title: "Personalised Budget Advice",
-              desc: "Get weekly AI insights tailored to your household's spending patterns.",
-            },
-          ].map((f, i) => (
-            <motion.div
-              key={f.title}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.5, ease: [0.2, 0, 0, 1] }}
-              className="glass-card p-8 space-y-4"
-            >
-              <div className="size-10 rounded-lg bg-accent/10 flex items-center justify-center">
-                <f.icon className="size-5 text-accent" />
+            {/* Step 2 */}
+            <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+              <div className="order-1 md:order-1">
+                <div className="bg-[#F8F9FA] rounded-[2.5rem] p-8 border border-gray-100 shadow-sm relative overflow-hidden aspect-square md:aspect-auto md:h-[550px] flex items-center justify-center">
+                  <div className="w-full max-w-sm bg-white rounded-3xl shadow-2xl border border-gray-200 p-8 space-y-6 transform transition-transform hover:-translate-y-2 duration-500">
+                     <div className="flex justify-between items-center pb-4 border-b border-gray-100">
+                       <span className="font-semibold text-xl text-gray-800">Extracted Items</span>
+                       <span className="text-[#A297FF] font-semibold text-xl">£42.50</span>
+                     </div>
+                     <div className="space-y-4">
+                        <div className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer border border-transparent hover:border-gray-100">
+                          <div className="size-12 rounded-xl bg-orange-50 flex items-center justify-center text-2xl">☕</div>
+                          <div>
+                            <div className="font-semibold text-gray-800">Coffee Shop</div>
+                            <div className="text-sm text-gray-500 font-medium">Food & Drink</div>
+                          </div>
+                          <div className="ml-auto font-semibold text-gray-800">£4.50</div>
+                        </div>
+                        <div className="flex items-center gap-4 p-3 hover:bg-gray-50 rounded-xl transition-colors cursor-pointer border border-transparent hover:border-gray-100">
+                          <div className="size-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl">🛒</div>
+                          <div>
+                            <div className="font-semibold text-gray-800">Grocery Store</div>
+                            <div className="text-sm text-gray-500 font-medium">Groceries</div>
+                          </div>
+                          <div className="ml-auto font-semibold text-gray-800">£38.00</div>
+                        </div>
+                     </div>
+                     <div className="pt-2">
+                       <Button className="w-full rounded-2xl h-14 bg-[#1a1a1a] text-white hover:bg-black/90 text-lg shadow-lg">
+                         Submit expense
+                       </Button>
+                     </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-semibold">{f.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
-            </motion.div>
-          ))}
+               <div className="order-2 md:order-2 h-full min-h-[350px] flex items-center p-10 bg-[#F4FBDE] rounded-[2.5rem] border border-green-100">
+                <div className="space-y-6">
+                   <div className="size-16 rounded-2xl bg-white shadow-sm border border-green-100 flex items-center justify-center text-3xl">
+                      ✅
+                   </div>
+                   <h3 className="text-3xl font-semibold text-[#1a1a1a]">2. Submit</h3>
+                   <p className="text-xl text-gray-600 leading-relaxed">
+                     Real time extraction of information that you can edit. and Submit it - Expenses are organized into a report for you. Just tap Submit when you're ready.
+                   </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Step 3: AI powered budget advisor agent */}
+            <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+              <div className="order-1 md:order-1">
+                 <div className="bg-white p-4 rounded-[2.5rem] shadow-xl border border-gray-100 transform transition-transform hover:-translate-y-2 duration-500">
+                   <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop" alt="Student using app" className="rounded-[2rem] object-cover aspect-square md:aspect-[4/3] w-full" />
+                 </div>
+              </div>
+              <div className="order-2 md:order-2 h-full min-h-[350px] flex items-center p-10 bg-[#F5F6FE] rounded-[2.5rem] border border-purple-100">
+                 <div className="space-y-6">
+                   <div className="size-16 rounded-2xl bg-white shadow-sm border border-purple-100 flex items-center justify-center text-3xl">
+                      🧠
+                   </div>
+                   <h3 className="text-3xl font-semibold text-[#1a1a1a]">AI powered budget advisor agent.</h3>
+                   <p className="text-xl text-gray-600 leading-relaxed">
+                     Your personal 24/7 advisor available to advise you on your spending. Wondering how much you have been spending? Ask your agent to break down your expenses. Before spending ask agent if this meets your budget.
+                   </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section id="how-it-works" className="bg-secondary/50 py-12 sm:py-24">
-        <div className="max-w-3xl mx-auto px-4">
-          <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-center mb-8 sm:mb-16">How it works</h2>
-          <div className="space-y-0 relative">
-            <div className="absolute left-6 top-8 bottom-8 w-px bg-border hidden sm:block" />
-            {[
-              {
-                step: "1",
-                title: "Upload a receipt photo",
-                desc: "Snap a photo or drag and drop. We support JPG, PNG, WebP, HEIC, and PDF.",
-              },
-              {
-                step: "2",
-                title: "AI extracts and categorises every item",
-                desc: "Our vision model reads line items, prices, and promotions automatically.",
-              },
-              {
-                step: "3",
-                title: "Get insights tailored to your household",
-                desc: "Weekly advice on where to save, what to swap, and how to hit your budget.",
-              },
-            ].map((s, i) => (
-              <motion.div
-                key={s.step}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="flex gap-6 py-8"
-              >
-                <div className="relative z-10 size-12 rounded-full bg-accent text-accent-foreground flex items-center justify-center text-sm font-semibold shrink-0">
-                  {s.step}
+      {/* Benefits Agent */}
+      <section className="py-24 sm:py-32 bg-[#FAF9F8] overflow-hidden border-y border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-semibold tracking-tight text-[#1a1a1a] mb-6">Benefits Agent</h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            We have an agent that will find different benefits and bring them to the door step of the users. Thousands of families in Europe miss billions of Euros in unclaimed benefits. Our benefits agent helps to find benefits.
+          </p>
+        </div>
+
+        {/* Carousel / Marquee */}
+        <div className="relative flex overflow-x-hidden group pb-12 w-full max-w-[100vw]">
+          <div className="flex animate-marquee group-hover:[animation-play-state:paused] gap-8 px-8 cursor-grab active:cursor-grabbing">
+            {[1, 2, 3].map((item, idx) => (
+              <div key={`benefits-1-${idx}`} className="flex-none w-[350px] sm:w-[550px] bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row transition-transform hover:scale-[1.02] duration-300">
+                <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto">
+                  <img src={[
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600&auto=format&fit=crop"
+                  ][idx]} alt="Benefit category" className="w-full h-full object-cover" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{s.desc}</p>
+                <div className="p-8 sm:w-3/5 flex flex-col justify-center">
+                  <h4 className="text-2xl font-semibold text-[#1a1a1a] mb-3">
+                    {["Grocery Vouchers", "Child Support", "Energy Grants"][idx]}
+                  </h4>
+                  <p className="text-gray-500 text-lg leading-relaxed">
+                    {["Are you eligible for monthly supermarket subsidies? Our agent will check.", "Find out if you qualify for childcare benefits in your local area.", "Claim up to £400 towards your winter energy costs seamlessly."][idx]}
+                  </p>
                 </div>
-              </motion.div>
+              </div>
+            ))}
+             {[1, 2, 3].map((item, idx) => (
+              <div key={`benefits-2-${idx}`} className="flex-none w-[350px] sm:w-[550px] bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col sm:flex-row transition-transform hover:scale-[1.02] duration-300">
+                <div className="sm:w-2/5 aspect-[4/3] sm:aspect-auto">
+                  <img src={[
+                    "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=600&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600&auto=format&fit=crop"
+                  ][idx]} alt="Benefit category" className="w-full h-full object-cover" />
+                </div>
+                <div className="p-8 sm:w-3/5 flex flex-col justify-center">
+                  <h4 className="text-2xl font-semibold text-[#1a1a1a] mb-3">
+                    {["Grocery Vouchers", "Child Support", "Energy Grants"][idx]}
+                  </h4>
+                  <p className="text-gray-500 text-lg leading-relaxed">
+                    {["Are you eligible for monthly supermarket subsidies? Our agent will check.", "Find out if you qualify for childcare benefits in your local area.", "Claim up to £400 towards your winter energy costs seamlessly."][idx]}
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section id="stats" className="max-w-5xl mx-auto px-4 py-12 sm:py-24">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          {[
-            { value: "50,000+", label: "receipts scanned" },
-            { value: "£1.2M", label: "tracked" },
-            { value: "12", label: "European countries" },
-            { value: "Free", label: "to start" },
-          ].map((s) => (
-            <div key={s.label} className="space-y-1">
-              <p className="text-2xl sm:text-3xl font-semibold tabular">{s.value}</p>
-              <p className="text-sm text-muted-foreground">{s.label}</p>
-            </div>
-          ))}
-        </div>
+      {/* CTA Footer Wrapper */}
+      <section className="bg-white py-32">
+         <div className="max-w-4xl mx-auto px-4 text-center">
+           <h2 className="text-4xl md:text-[3.5rem] font-semibold tracking-tight text-[#1a1a1a] mb-10 leading-[1.1]">
+             Ready to be in control of your grocery shopping and do you to ensure you don't leave any penny unclaimed
+           </h2>
+           <Button asChild size="lg" className="rounded-full bg-[#A297FF] hover:bg-[#8e81f1] text-white px-10 h-16 text-xl shadow-md shadow-purple-500/20">
+              <Link to="/register">Join budgetadvisor.ai</Link>
+           </Button>
+         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border">
-        <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-semibold">
-              <span className="text-accent">•</span> budgetadvisor.ai
-            </p>
-            <p className="text-sm text-muted-foreground mt-1">Your money, finally clear.</p>
-          </div>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Privacy
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Terms
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Contact
-            </a>
-          </div>
-          <p className="text-xs text-muted-foreground">© 2025 budgetadvisor.ai. All rights reserved.</p>
-        </div>
-      </footer>
+      <GlobalFooter />
     </div>
   );
 }

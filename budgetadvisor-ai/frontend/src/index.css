@@ -4,25 +4,27 @@
 
 @layer base {
   :root {
-    --background: 60 4% 97%;
-    --foreground: 230 54% 14%;
+    --background: 233 40% 98%; /* #F5F6FE matching landing hero background */
+    --foreground: 0 0% 10%; /* #1a1a1a */
 
-    --card: 0 0% 100%;
-    --card-foreground: 230 54% 14%;
+    --card: 0 0% 100%; /* Pure white */
+    --card-foreground: 0 0% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 230 54% 14%;
+    --popover-foreground: 0 0% 10%;
 
-    --primary: 234 73% 14%;
-    --primary-foreground: 210 40% 98%;
+    /* Using A297FF for primary (buttons, brand accents) */
+    --primary: 247 100% 79%; 
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 230 54% 14%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 220 9% 46%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 239 84% 67%;
+    /* Accent acting as standard black button in the previous setup, let's keep it black for general "primary" buttons that aren't the CTA, matching Aave's default black pills */
+    --accent: 0 0% 10%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,69 +36,25 @@
     --warning: 38 92% 50%;
     --warning-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 239 84% 67%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 247 100% 79%;
 
-    --radius: 0.75rem;
+    /* Increase border radius for all shadcn components */
+    --radius: 1.5rem;
 
-    --shadow-sm: 0 0 0 1px rgba(0,0,0,.03), 0 1px 2px rgba(0,0,0,.04);
-    --shadow-md: 0 0 0 1px rgba(0,0,0,.04), 0 4px 12px -2px rgba(0,0,0,.06), 0 2px 4px -1px rgba(0,0,0,.03);
-    --shadow-glass: inset 0 0 0 1px rgba(255,255,255,0.15), 0 8px 32px rgba(0,0,0,0.08);
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-glass: inset 0 0 0 1px rgba(255,255,255,0.15), 0 8px 32px rgba(0,0,0,0.04);
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 239 84% 67%;
-  }
-
-  .dark {
-    --background: 240 7% 4%;
-    --foreground: 210 40% 98%;
-
-    --card: 240 5% 12%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 240 5% 12%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 240 7% 4%;
-
-    --secondary: 240 4% 16%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 240 4% 16%;
-    --muted-foreground: 220 9% 60%;
-
-    --accent: 239 84% 74%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --success: 142 71% 45%;
-    --success-foreground: 0 0% 100%;
-
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
-
-    --border: 240 4% 20%;
-    --input: 240 4% 20%;
-    --ring: 239 84% 74%;
-
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 10%;
+    --sidebar-primary: 0 0% 10%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 239 84% 74%;
+    --sidebar-accent: 240 5% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 240 6% 90%;
+    --sidebar-ring: 247 100% 79%;
   }
 }
 
@@ -242,4 +200,15 @@
 @keyframes advisor-slide-up {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 2)); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: flex;
+  width: max-content;
 }

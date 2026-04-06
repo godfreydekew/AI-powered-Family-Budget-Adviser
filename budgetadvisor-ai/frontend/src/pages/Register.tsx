@@ -6,7 +6,7 @@ import { register } from "@/api/auth";
 import { useAuth } from "@/contexts/AuthContext";
 import { getApiErrorMessage } from "@/api/errors";
 import { ErrorAlert } from "@/components/ErrorAlert";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { GlobalFooter } from "@/components/GlobalFooter";
 import { Button } from "@/components/ui/button";
 
 export default function Register() {
@@ -48,27 +48,26 @@ export default function Register() {
   }
 
   return (
-    <div className="min-h-screen hero-gradient flex flex-col">
-      <header className="sticky top-0 z-30 glass-nav border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold tracking-tight">
-            <span className="text-accent">•</span> budgetadvisor.ai
+    <div className="min-h-screen bg-gradient-to-b from-[#F5F6FE] to-white flex flex-col">
+      <header className="sticky top-0 z-30 bg-transparent border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <Link to="/" className="text-xl font-semibold tracking-tight text-[#1a1a1a] flex items-center">
+            <span className="text-black text-2xl mr-2">💰</span> budgetadvisor.ai
           </Link>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-3 py-2">Home</Link>
+            <Link to="/" className="text-sm font-medium text-gray-500 hover:text-[#1a1a1a] transition-colors px-3 py-2">Home</Link>
           </div>
         </div>
       </header>
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <Link to="/" className="text-2xl font-semibold tracking-tight">
-              <span className="text-accent">•</span> budgetadvisor.ai
+            <Link to="/" className="text-3xl font-semibold tracking-tight text-[#1a1a1a] flex items-center justify-center">
+              <span className="text-black text-3xl mr-2">💰</span> budgetadvisor.ai
             </Link>
-            <p className="text-sm text-muted-foreground mt-2">Create your account</p>
+            <p className="text-base text-gray-500 mt-3">Create your account</p>
           </div>
-          <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
+          <form onSubmit={handleSubmit} className="bg-white shadow-2xl border border-gray-100 p-10 space-y-6 rounded-[2.5rem]">
             <ErrorAlert message={error} />
             <div>
               <label className="text-sm font-medium mb-1.5 block">Full Name</label>
@@ -129,6 +128,7 @@ export default function Register() {
           </form>
         </div>
       </div>
+      <GlobalFooter />
     </div>
   );
 }

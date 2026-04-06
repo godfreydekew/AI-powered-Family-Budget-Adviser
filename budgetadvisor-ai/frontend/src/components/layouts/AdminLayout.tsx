@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
-import { ThemeToggle } from "../ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
@@ -67,7 +66,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
         onClick={() => setMobileOpen(false)}
         className="text-xl font-semibold text-sidebar-primary-foreground tracking-tight"
       >
-        <span className="text-accent">•</span> budgetadvisor.ai{" "}
+        <span className="text-black text-2xl mr-1">💰</span> budgetadvisor.ai{" "}
         <span className="text-xs font-normal text-sidebar-foreground/40 ml-1">Admin</span>
       </Link>
     </div>
@@ -116,7 +115,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
           </div>
           <div className="hidden md:block" />
           <div className="flex items-center gap-2">
-            <ThemeToggle />
+            {/* Header controls removed to match simplified theme */}
           </div>
         </header>
         <main className="flex-1 p-6 lg:p-8 overflow-auto">{children}</main>

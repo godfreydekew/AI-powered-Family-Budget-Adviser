@@ -1,5 +1,4 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { ThemeToggle } from "../ThemeToggle";
 import {
   LayoutDashboard,
   Receipt,
@@ -52,12 +51,12 @@ export function AuthenticatedLayout({
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 glass-nav border-b border-border">
+    <div className="min-h-screen bg-[#F5F6FE] flex flex-col">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8">
             <Link to="/" className="text-xl font-semibold tracking-tight">
-              <span className="text-accent">•</span> budgetadvisor.ai
+              <span className="text-black text-2xl mr-1">💰</span> budgetadvisor.ai
             </Link>
             <nav className="hidden md:flex items-center gap-1">
               {navItems.map((item) => (
@@ -77,7 +76,6 @@ export function AuthenticatedLayout({
           </div>
 
           <div className="flex items-center gap-3">
-            <ThemeToggle />
             <div className="relative">
               <button
                 onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -161,7 +159,6 @@ export function AuthenticatedLayout({
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
         {children}
       </main>
-
     </div>
   );
 }

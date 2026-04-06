@@ -15,25 +15,17 @@ const ThemeContext = createContext<ThemeContextType>({
 });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("finio-theme");
-      if (stored === "light" || stored === "dark") return stored;
-    }
-    return "light";
-  });
-
+  const [theme, setTheme] = useState<Theme>("light");
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
     const root = document.documentElement;
-    setResolvedTheme(theme);
-    root.classList.toggle("dark", theme === "dark");
-    localStorage.setItem("finio-theme", theme);
-  }, [theme]);
+    root.classList.remove("dark");
+    root.classList.add("light");
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, resolvedTheme, setTheme }}>
+    <ThemeContext.Provider value={{ theme: "light", resolvedTheme: "light", setTheme: () => {} }}>
       {children}
     </ThemeContext.Provider>
   );

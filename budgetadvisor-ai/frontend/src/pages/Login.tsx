@@ -6,7 +6,7 @@ import { requestPasswordReset } from "@/api/auth";
 import { getApiErrorMessage } from "@/api/errors";
 import { ErrorAlert } from "@/components/ErrorAlert";
 import { SuccessAlert } from "@/components/SuccessAlert";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import { GlobalFooter } from "@/components/GlobalFooter";
 import { Button } from "@/components/ui/button";
 
 export default function Login() {
@@ -60,27 +60,26 @@ export default function Login() {
 
   if (showForgot) {
     return (
-      <div className="min-h-screen hero-gradient flex flex-col">
-        <header className="sticky top-0 z-30 glass-nav border-b border-border">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <Link to="/" className="text-xl font-semibold tracking-tight">
-              <span className="text-accent">•</span> budgetadvisor.ai
+      <div className="min-h-screen bg-gradient-to-b from-[#F5F6FE] to-white flex flex-col">
+        <header className="sticky top-0 z-30 bg-transparent border-b border-gray-100">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <Link to="/" className="text-xl font-semibold tracking-tight text-[#1a1a1a] flex items-center">
+              <span className="text-black text-2xl mr-2">💰</span> budgetadvisor.ai
             </Link>
             <div className="flex items-center gap-3">
-              <ThemeToggle />
-              <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-3 py-2">Home</Link>
+              <Link to="/" className="text-sm font-medium text-gray-500 hover:text-[#1a1a1a] transition-colors px-3 py-2">Home</Link>
             </div>
           </div>
         </header>
         <div className="flex-1 flex items-center justify-center px-4">
           <div className="w-full max-w-md">
             <div className="text-center mb-8">
-              <Link to="/" className="text-2xl font-semibold tracking-tight">
-                <span className="text-accent">•</span> budgetadvisor.ai
+              <Link to="/" className="text-3xl font-semibold tracking-tight text-[#1a1a1a] flex items-center justify-center">
+                <span className="text-black text-3xl mr-2">💰</span> budgetadvisor.ai
               </Link>
-              <p className="text-sm text-muted-foreground mt-2">Reset your password</p>
+              <p className="text-base text-gray-500 mt-3">Reset your password</p>
             </div>
-            <div className="glass-card p-8 space-y-6">
+            <div className="bg-white shadow-2xl border border-gray-100 p-10 space-y-8 rounded-[2.5rem]">
               {forgotSent ? (
                 <SuccessAlert message="If that email is registered, we've sent a reset link. Check your inbox." />
               ) : (
@@ -88,7 +87,7 @@ export default function Login() {
                   <ErrorAlert message={forgotError} />
                   <div>
                     <label className="text-sm font-medium mb-1.5 block">Email</label>
-                    <input type="email" required value={forgotEmail} onChange={(e) => setForgotEmail(e.target.value)} placeholder="sarah@email.com" className="w-full px-4 py-2.5 rounded-lg bg-secondary border-0 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                    <input type="email" required value={forgotEmail} onChange={(e) => setForgotEmail(e.target.value)} placeholder="sarah@email.com" className="w-full px-5 py-3 rounded-xl bg-[#F5F6FE] border-0 text-base placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#A297FF]" />
                   </div>
                   <Button type="submit" disabled={forgotLoading} className="w-full">
                     {forgotLoading ? "Sending…" : "Send Reset Link"}
@@ -101,42 +100,42 @@ export default function Login() {
             </div>
           </div>
         </div>
+        <GlobalFooter />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen hero-gradient flex flex-col">
-      <header className="sticky top-0 z-30 glass-nav border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="text-xl font-semibold tracking-tight">
-            <span className="text-accent">•</span> budgetadvisor.ai
+    <div className="min-h-screen bg-gradient-to-b from-[#F5F6FE] to-white flex flex-col">
+      <header className="sticky top-0 z-30 bg-transparent border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <Link to="/" className="text-xl font-semibold tracking-tight text-[#1a1a1a] flex items-center">
+            <span className="text-black text-2xl mr-2">💰</span> budgetadvisor.ai
           </Link>
           <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Link to="/" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors px-3 py-2">Home</Link>
+            <Link to="/" className="text-sm font-medium text-gray-500 hover:text-[#1a1a1a] transition-colors px-3 py-2">Home</Link>
           </div>
         </div>
       </header>
       <div className="flex-1 flex items-center justify-center px-4">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <Link to="/" className="text-2xl font-semibold tracking-tight">
-              <span className="text-accent">•</span> budgetadvisor.ai
+            <Link to="/" className="text-3xl font-semibold tracking-tight text-[#1a1a1a] flex items-center justify-center">
+              <span className="text-black text-3xl mr-2">💰</span> budgetadvisor.ai
             </Link>
-            <p className="text-sm text-muted-foreground mt-2">Welcome back</p>
+            <p className="text-base text-gray-500 mt-3">Welcome back</p>
           </div>
-          <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">
+          <form onSubmit={handleSubmit} className="bg-white shadow-2xl border border-gray-100 p-10 space-y-8 rounded-[2.5rem]">
             <ErrorAlert message={error} />
             <div className="space-y-4">
               <div>
                 <label className="text-sm font-medium mb-1.5 block">Email</label>
-                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="sarah@email.com" className="w-full px-4 py-2.5 rounded-lg bg-secondary border-0 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="sarah@email.com" className="w-full px-5 py-3 rounded-xl bg-[#F5F6FE] border-0 text-base placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#A297FF]" />
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block">Password</label>
                 <div className="relative">
-                  <input type={showPassword ? "text" : "password"} required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="w-full px-4 py-2.5 rounded-lg bg-secondary border-0 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring pr-10" />
+                  <input type={showPassword ? "text" : "password"} required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" className="w-full px-5 py-3 rounded-xl bg-[#F5F6FE] border-0 text-base placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#A297FF] pr-10" />
                   <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground">
                     {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                   </button>
@@ -162,6 +161,7 @@ export default function Login() {
           </form>
         </div>
       </div>
+      <GlobalFooter />
     </div>
   );
 }

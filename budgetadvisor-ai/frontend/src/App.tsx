@@ -27,6 +27,7 @@ import AdminProfile from "./pages/admin/AdminProfile";
 import AdminBenefits from "./pages/admin/AdminBenefits";
 import BenefitsPage from "./pages/Benefits";
 import ResetPassword from "./pages/ResetPassword";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -73,6 +74,7 @@ const App = () => (
                   </PublicRoute>
                 }
               />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
 
               {/* Authenticated */}
               <Route
