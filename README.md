@@ -2,7 +2,7 @@
 
 ## Overview
 
-![Overview Design](Images/overview_design.png)
+![Overview Design](/budgetadvisor-ai/frontend/public/budgetadvisor.ai.svg)
 
 Pipeline: Receipt Image Collection → Image Processing → OCR → LLM Parser → ML Classification (with Linked Data).
 
